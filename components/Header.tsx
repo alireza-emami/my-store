@@ -11,32 +11,21 @@ import {
   DropdownTrigger,
   Dropdown,
   DropdownMenu,
+  Input,
 } from "@nextui-org/react";
 import { CiShoppingCart } from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
 import { Product } from "@/app/page";
 
-export default async function Header() {
-  //   const icons = {
-  //     chevron: <ChevronDown fill="currentColor" size={16} />,
-  //     scale: <Scale className="text-warning" fill="currentColor" size={30} />,
-  //     lock: <Lock className="text-success" fill="currentColor" size={30} />,
-  //     activity: <Activity className="text-secondary" fill="currentColor" size={30} />,
-  //     flash: <Flash className="text-primary" fill="currentColor" size={30} />,
-  //     server: <Server className="text-success" fill="currentColor" size={30} />,
-  //     user: <TagUser className="text-danger" fill="currentColor" size={30} />,
-  //   };
-
-  const fetchProducts = await fetch("https://fakestoreapi.com/products", {
-    cache: "no-store",
-  });
-  const products: Product[] = await fetchProducts.json();
+export default function Header() {
   return (
     <Navbar>
       <NavbarBrand>
         {/* <AcmeLogo /> */}
         <p className="font-bold text-inherit">TurboStore</p>
       </NavbarBrand>
+      <Input className="h-10" type="Search" label="Search" />
+
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <Dropdown>
           <NavbarItem>
@@ -52,49 +41,54 @@ export default async function Header() {
               </Button>
             </DropdownTrigger>
           </NavbarItem>
-          {products.map((i)=>(
           <DropdownMenu
-          aria-label="ACME features"
-          className="w-[340px]"
-          itemClasses={{
-            base: "gap-4",
-          }}
-        >
-          <DropdownItem
-            key="autoscaling"
-            description="Men's clothing"
-            //   startContent={icons.scale}
+            aria-label="ACME features"
+            className="w-[340px]"
+            itemClasses={{
+              base: "gap-4",
+            }}
           >
-            <Link href={`/category/${i.category}`}>+10 than Men's clothing</Link>
-          </DropdownItem>
-          <DropdownItem
-            key="usage_metrics"
-            description="Jewelery"
-            //   startContent={icons.activity}
-          >
-            +11 than Jewelery
-          </DropdownItem>
-          <DropdownItem
-            key="production_ready"
-            description="Electronics"
-            //   startContent={icons.flash}
-          >
-            +12 than Electronics
-          </DropdownItem>
-          <DropdownItem
-            key="99_uptime"
-            description="Women's clothing
+            <DropdownItem
+              key="autoscaling"
+              description="Men's clothing"
+              //   startContent={icons.scale}
+            >
+              <Link className="text-black" href={`/category/men's clothing`}>
+                +10 than Men's clothing
+              </Link>
+            </DropdownItem>
+            <DropdownItem
+              key="usage_metrics"
+              description="Jewelery"
+              //   startContent={icons.activity}
+            >
+              <Link className="text-black" href={`/category/jewelery`}>
+                +11 than Jewelery
+              </Link>
+            </DropdownItem>
+            <DropdownItem
+              key="production_ready"
+              description="Electronics"
+              //   startContent={icons.flash}
+            >
+              <Link className="text-black" href={`/category/electronics`}>
+                +12 than Electronics
+              </Link>
+            </DropdownItem>
+            <DropdownItem
+              key="99_uptime"
+              description="Women's clothing
             "
-            //   startContent={icons.server}
-          >
-            +13 than Women's clothing
-          </DropdownItem>
-        </DropdownMenu>
-          ))}
-
+              //   startContent={icons.server}
+            >
+              <Link className="text-black" href={`/category/women's clothing`}>
+                +13 than Women's clothing
+              </Link>
+            </DropdownItem>
+          </DropdownMenu>
         </Dropdown>
-        <NavbarItem isActive>
-          <Link href="/" aria-current="page">
+        <NavbarItem>
+          <Link className="text-black" href="/" aria-current="page">
             Home
           </Link>
         </NavbarItem>
