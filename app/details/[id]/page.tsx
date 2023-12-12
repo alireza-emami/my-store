@@ -4,10 +4,8 @@ import {
   CardBody,
   CardFooter,
   Divider,
-  Link,
   Image,
   Input,
-  Button,
 } from "@nextui-org/react";
 import { Product } from "@/app/page";
 import HandleBuy from "@/components/HandleBuy";
@@ -51,7 +49,7 @@ async function DetailsPage({ params }: { params: { id: number } }) {
         </CardBody>
         <Divider />
         <CardFooter>
-          <HandleBuy product={product} />
+          <HandleBuy  product={product} />
         </CardFooter>
       </Card>
     </div>
