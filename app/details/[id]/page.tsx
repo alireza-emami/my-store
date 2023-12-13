@@ -6,9 +6,12 @@ import {
   Divider,
   Image,
   Input,
+  Button,
 } from "@nextui-org/react";
 import { Product } from "@/app/page";
-import HandleBuy from "@/components/HandleBuy";
+import Cart from "@/components/Cart";
+import { setCookie } from "cookies-next";
+import CButton from "@/components/CustoButton";
 
 async function DetailsPage({ params }: { params: { id: number } }) {
   //   console.log(params);
@@ -49,7 +52,13 @@ async function DetailsPage({ params }: { params: { id: number } }) {
         </CardBody>
         <Divider />
         <CardFooter>
-          <HandleBuy  product={product} />
+          {/* <Cart  product={product} /> */}
+          {/* <CButton
+            product={product}
+            className="flex flex-1 "
+            color="danger"
+            // onPress={setCookie(product.title, `${product.id}`)}
+          /> */}
         </CardFooter>
       </Card>
     </div>

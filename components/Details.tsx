@@ -1,5 +1,5 @@
 "use client";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Product } from "../app/page";
 import {
   Modal,
@@ -19,16 +19,18 @@ interface Prop {
 
 const Details: FC<Prop> = ({ product }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [quantity, setQuantity] = useState<number>(1);
   return (
     <>
-      <Button className="flex flex-1 " color={'danger'} onPress={onOpen}>Open Modal</Button>
+      <Button className="flex flex-1 " color={"danger"} onPress={onOpen}>
+        Open Modal
+      </Button>
 
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         size={"4xl"}
         className="bg-slate-900  "
-        
       >
         <ModalContent>
           {(onClose: any) => (
@@ -42,7 +44,12 @@ const Details: FC<Prop> = ({ product }) => {
                   <p className="pb-5">{product.category}</p>
                   <p className="pb-5">{product.rating.rate}</p>
                   <p className="pb-5">{product.price} $</p>
-                  <Input type="number" placeholder="0" className="w-14 " />
+                  <Input
+                    type="number"
+                    className="w-14 "
+                    value={quantity.toString()}
+                    onChange={(e)=>{setQuantity(+e.target.value)}}
+                  />
                 </div>
                 <Image
                   alt="NextUI Fruit Image with Zoom"
