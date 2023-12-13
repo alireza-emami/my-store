@@ -17,7 +17,9 @@ const CartPage = async () => {
     <>
       <div>
         {products.map((product) => (
-          <Cart product={product} />
+          <Cart
+            product={product}
+          />
         ))}
         <div></div>
       </div>

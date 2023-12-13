@@ -14,17 +14,17 @@ interface Prop {
     | "warning"
     | "danger"
     | undefined;
-  // onPress: any
+    quantity:number
 }
-const CButton: FC<Prop> = ({ product, className, color }) => {
+const CButton: FC<Prop> = ({ product, className, color , quantity }) => {
   return (
     <>
       <Button
         className={className}
         color={color}
-        // onPress={() => {
-        //   onPress;
-        // }}
+        onPress={() => {
+          setCookie(`${quantity}`, `${product.id}`);
+        }}
       >
         Buy
       </Button>

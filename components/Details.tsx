@@ -1,75 +1,63 @@
 "use client";
-import { FC, useState } from "react";
-import { Product } from "../app/page";
 import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
-  Input,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Divider,
   Image,
+  Input,
 } from "@nextui-org/react";
+import CButton from "./CustomButton";
+import { Product } from "@/app/page";
+import { FC, useState } from "react";
 
 interface Prop {
   product: Product;
 }
-
 const Details: FC<Prop> = ({ product }) => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [quantity, setQuantity] = useState<number>(1);
-  return (
-    <>
-      <Button className="flex flex-1 " color={"danger"} onPress={onOpen}>
-        Open Modal
-      </Button>
+  const [quantity, setQuantity] = useState(1);
 
-      <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        size={"4xl"}
-        className="bg-slate-900  "
-      >
-        <ModalContent>
-          {(onClose: any) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1 text-center">
-                {product.title}
-              </ModalHeader>
-              <ModalBody className="flex flex-row justify-between">
-                <div className="">
-                  <p className="pb-5 w-[550px]">{product.description}</p>
-                  <p className="pb-5">{product.category}</p>
-                  <p className="pb-5">{product.rating.rate}</p>
-                  <p className="pb-5">{product.price} $</p>
-                  <Input
-                    type="number"
-                    className="w-14 "
-                    value={quantity.toString()}
-                    onChange={(e)=>{setQuantity(+e.target.value)}}
-                  />
-                </div>
-                <Image
-                  alt="NextUI Fruit Image with Zoom"
-                  src={product.image}
-                  className="w-64 h-72"
-                />
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
-                <Button color="danger" onPress={onClose}>
-                  Action
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
-    </>
+  return (
+    <Card className="m-12">
+      <CardHeader className="flex gap-3 text-center justify-center">
+        <div className="flex flex-col">
+          <p className="text-md">{product.title}</p>
+          <p className="text-small text-default-500">{product.category}</p>
+        </div>
+      </CardHeader>
+      <Divider />
+      <CardBody className="flex flex-col-reverse justify-between items-center md:flex-row">
+        <div>
+          <p className=" md:w-[550px] p-2">{product.description}</p>
+          <p className="p-2">{product.rating.count}</p>
+          <p className="p-2">{product.rating.rate}</p>
+          <p className="p-2">{product.price}</p>
+          <Input
+            type="number"
+            placeholder="0"
+            className="w-14 "
+            value={quantity.toString()}
+            onChange={(e) => {
+              setQuantity(+e.target.value);
+            }}
+          />
+        </div>
+        <Image
+          alt="nextui logo"
+          height={240}
+          radius="sm"
+          src={product.image}
+          width={240}
+          isZoomed={true}
+        />
+      </CardBody>
+      <Divider />
+      <CardFooter>
+        <CButton product={product} className="flex flex-1 " color="danger" quantity={quantity}/>
+      </CardFooter>
+    </Card>
   );
 };
+
 export default Details;

@@ -121,14 +121,16 @@ export default function Header() {
           <NavbarItem>
             <div className="flex gap-4 items-center">
               <Button isIconOnly color="danger" aria-label="Like">
-                <CiShoppingCart size={20} />
+                <Link className="text-white" href="/cart">
+                  <CiShoppingCart size={20} />
+                </Link>
               </Button>
             </div>
           </NavbarItem>
         </NavbarContent>
         <NavbarMenu>
           <NavbarMenuItem className="flex justify-between items-start">
-            <NavbarItem >
+            <NavbarItem>
               <Dropdown>
                 <NavbarItem>
                   <DropdownTrigger>
@@ -210,7 +212,9 @@ export default function Header() {
             <NavbarItem>
               <div className="flex gap-4 items-center">
                 <Button isIconOnly color="danger" aria-label="Like">
-                  <CiShoppingCart size={20} />
+                  <Link className="text-white" href="/cart">
+                    <CiShoppingCart size={20} />
+                  </Link>
                 </Button>
               </div>
             </NavbarItem>
