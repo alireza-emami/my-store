@@ -1,7 +1,10 @@
 "use client";
+import { Relaod } from "@/app/action";
 import { Product } from "@/app/page";
 import { Button } from "@nextui-org/react";
 import { setCookie } from "cookies-next";
+import { useRouter } from 'next/navigation';
+
 import { FC } from "react";
 interface Prop {
   product: Product;
@@ -14,21 +17,22 @@ interface Prop {
     | "warning"
     | "danger"
     | undefined;
-    quantity:number
+  quantity: number;
 }
-const CButton: FC<Prop> = ({ product, className, color , quantity }) => {
+const CButton: FC<Prop> = ({ product, className, color, quantity}) => {
+  const router = useRouter()
   return (
-    <>
-      <Button
-        className={className}
-        color={color}
-        onPress={() => {
-          setCookie(`${quantity}`, `${product.id}`);
-        }}
-      >
-        Buy
-      </Button>
-    </>
+    <Button
+      className={className}
+      color={color}
+      onPress={() => {
+        setCookie(`${product.id}`, `${quantity}`);
+        Relaod();
+        router.push("/cart");
+      }}
+    >
+      Buy
+    </Button>
   );
 };
 

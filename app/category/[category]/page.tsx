@@ -37,7 +37,7 @@ const CategorysDetails = async ({ params }: { params: { category: string } }) =>
           <CardFooter>
             {/* <Detailssss product={product} /> */}
             <Button className="flex flex-1 " color={"danger"}>
-              <Link className="text-white" href={`/details/${product.id}`}>ddd</Link>
+              <Link className="text-white" href={`/details/${product.id}`}>See more</Link>
             </Button>
           </CardFooter>
         </Card>

@@ -14,12 +14,13 @@ import { FC, useState } from "react";
 
 interface Prop {
   product: Product;
+  updatedQuantity: number;
 }
-const Details: FC<Prop> = ({ product }) => {
-  const [quantity, setQuantity] = useState(1);
+const Details: FC<Prop> = ({ product ,updatedQuantity }) => {
+  const [quantity, setQuantity] = useState(updatedQuantity);
 
   return (
-    <Card className="m-12">
+    <Card className="m-12  ">
       <CardHeader className="flex gap-3 text-center justify-center">
         <div className="flex flex-col">
           <p className="text-md">{product.title}</p>
@@ -27,7 +28,7 @@ const Details: FC<Prop> = ({ product }) => {
         </div>
       </CardHeader>
       <Divider />
-      <CardBody className="flex flex-col-reverse justify-between items-center md:flex-row">
+      <CardBody className="flex flex-col-reverse justify-between items-center md:flex-row ">
         <div>
           <p className=" md:w-[550px] p-2">{product.description}</p>
           <p className="p-2">{product.rating.count}</p>
@@ -54,7 +55,12 @@ const Details: FC<Prop> = ({ product }) => {
       </CardBody>
       <Divider />
       <CardFooter>
-        <CButton product={product} className="flex flex-1 " color="danger" quantity={quantity}/>
+        <CButton
+          product={product}
+          className="flex flex-1 "
+          color="danger"
+          quantity={quantity}
+        />
       </CardFooter>
     </Card>
   );

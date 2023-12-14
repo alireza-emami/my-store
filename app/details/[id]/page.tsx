@@ -1,10 +1,8 @@
-
 import { Product } from "@/app/page";
 import Details from "@/components/Details";
+import { cookies } from "next/headers";
 
 async function DetailsPage({ params }: { params: { id: number } }) {
-  //   console.log(params);
-
   const fetchProducts = await fetch(
     `https://fakestoreapi.com/products/${params.id}`,
     {
@@ -12,10 +10,11 @@ async function DetailsPage({ params }: { params: { id: number } }) {
     }
   );
   const product: Product = await fetchProducts.json();
-  
-  return (
-<Details product={product}/>
-  );
+
+  const cookieStore = cookies();
+  const updatedQuantity = cookieStore.get(`${product.id}`)?.value || "1";
+
+  return <Details product={product} updatedQuantity={+updatedQuantity} />;
 }
 
 export default DetailsPage;

@@ -6,27 +6,34 @@ import { deleteCookie } from "cookies-next";
 import { Relaod } from "@/app/action";
 
 interface Prop {
-  product: Product;
+  product: Product & {
+    item: {
+      name: string;
+      value: string;
+    };
+  };
 }
-export default function Cart({ product  }: Prop) {
+export default function Cart({ product }: Prop) {
   return (
-    <Card className=" m-5">
+    <Card className=" m-5 mr-20 ml-20  ">
       <CardBody className="flex-row justify-between">
         <div>
-          <p>{product.title}</p>
-          <p>{product.category}</p>
+          <p>Title : {product.title}</p>
+          <p>Category : {product.category}</p>
+          <p>Quantity : {product.item.value}</p>
+          <p>Price : {product.price * +product.item.value}</p>
         </div>
-        <div className=" ">
-          <Image src={product.image} className="w-32 h-36 " />
+        <div className="">
+          <Image src={product.image} className="w-32 h-36 z-0" />
         </div>
       </CardBody>
       <CardFooter>
         <Button
           className=""
           color="danger"
-          onPress={() => {
-            deleteCookie(product.title);
-            Relaod()
+          onClick={() => {
+            deleteCookie(`${product.id}`);
+            Relaod();
           }}
         >
           delete from cart
