@@ -15,8 +15,8 @@ interface Prop {
 }
 export default function Cart({ product }: Prop) {
   return (
-    <Card className=" m-5 mr-20 ml-20  ">
-      <CardBody className="flex-row justify-between">
+    <Card className=" m-5 mr-20 ml-20 flex ">
+      <CardBody className="md:flex-row flex-col justify-between items-center">
         <div>
           <p>Title : {product.title}</p>
           <p>Category : {product.category}</p>

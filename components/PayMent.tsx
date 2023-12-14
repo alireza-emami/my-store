@@ -19,7 +19,7 @@ export default function PayMent({ products }: Prop) {
   return (
     <Card className="fixed bottom-5 right-20 left-20 ">
       <CardBody>
-        <div className="flex justify-between p-5 pr-16 pl-16 ">
+        <div className="flex flex-col items-center sm:flex-row justify-between p-5 sm:pr-16 sm:pl-16 ">
           <p>Total Price : {totalPrice} $</p>
           <p>Total Products : {products.length}</p>
         </div>
