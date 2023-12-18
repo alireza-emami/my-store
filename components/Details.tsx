@@ -17,7 +17,7 @@ interface Prop {
   updatedQuantity: number;
 }
 const Details: FC<Prop> = ({ product ,updatedQuantity }) => {
-  const [quantity, setQuantity] = useState(updatedQuantity);
+  const [quantity, setQuantity] = useState(updatedQuantity );
 
   return (
     <Card className="m-12  ">
@@ -38,6 +38,8 @@ const Details: FC<Prop> = ({ product ,updatedQuantity }) => {
             type="number"
             placeholder="0"
             className="w-14 "
+            min={'1'}
+            max={'5'}
             value={quantity.toString()}
             onChange={(e) => {
               setQuantity(+e.target.value);

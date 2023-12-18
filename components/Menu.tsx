@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -11,8 +11,6 @@ import {
   DropdownTrigger,
   Dropdown,
   DropdownMenu,
-  Input,
-  Image,
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
@@ -24,8 +22,7 @@ import { FaTshirt } from "react-icons/fa";
 import { GiJewelCrown } from "react-icons/gi";
 import { FcElectronics } from "react-icons/fc";
 import { GiSkirt } from "react-icons/gi";
-import { cookies } from "next/headers";
-import { Product } from "@/app/page";
+import Search from "./Search";
 
 interface Prop {
   prductsLenth: number;
@@ -38,8 +35,9 @@ export default function Menu({ prductsLenth }: Prop) {
         <NavbarBrand>
           <p className="font-bold text-inherit">TurboStore</p>
         </NavbarBrand>
-        <Input className="h-10" type="Search" label="Search" />
-
+        <div className="w-full">
+          <Search />
+        </div>
         <NavbarContent className="sm:hidden" justify="start">
           <NavbarMenuToggle
             className="text-black"
@@ -223,25 +221,27 @@ export default function Menu({ prductsLenth }: Prop) {
 
             <NavbarItem>
               <div className="flex gap-4 items-center">
-              {prductsLenth ? (
-                <Badge content={prductsLenth} color="primary">
+                {prductsLenth ? (
+                  <Badge content={prductsLenth} color="primary">
+                    <Button isIconOnly color="danger" aria-label="Like">
+                      <Link className="text-white" href="/cart">
+                        <CiShoppingCart size={20} />
+                      </Link>
+                    </Button>
+                  </Badge>
+                ) : (
                   <Button isIconOnly color="danger" aria-label="Like">
                     <Link className="text-white" href="/cart">
                       <CiShoppingCart size={20} />
                     </Link>
                   </Button>
-                </Badge>
-              ) : (
-                <Button isIconOnly color="danger" aria-label="Like">
-                  <Link className="text-white" href="/cart">
-                    <CiShoppingCart size={20} />
-                  </Link>
-                </Button>
-              )}
+                )}
               </div>
             </NavbarItem>
           </NavbarMenuItem>
         </NavbarMenu>
+        <Link href="/login">Login</Link>
+
         {/* <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
           <Link href="#">Login</Link>
