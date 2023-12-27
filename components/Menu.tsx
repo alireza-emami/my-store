@@ -72,7 +72,7 @@ export default function Menu({ prductsLenth }: Prop) {
                 startContent={<FaTshirt size={25} color={"blue"} />}
               >
                 <Link className="text-black" href={`/category/men's clothing`}>
-                  +10 than Men's clothing
+                  {`+10 than Men's clothing`}
                 </Link>
               </DropdownItem>
               <DropdownItem
@@ -103,7 +103,7 @@ export default function Menu({ prductsLenth }: Prop) {
                   className="text-black"
                   href={`/category/women's clothing`}
                 >
-                  +13 than Women's clothing
+                  {`+13 than Women's clothing`}
                 </Link>
               </DropdownItem>
             </DropdownMenu>
@@ -171,7 +171,7 @@ export default function Menu({ prductsLenth }: Prop) {
                       className="text-black"
                       href={`/category/men's clothing`}
                     >
-                      +10 than Men's clothing
+                      {`+10 than Men's clothing`}
                     </Link>
                   </DropdownItem>
                   <DropdownItem
@@ -202,7 +202,7 @@ export default function Menu({ prductsLenth }: Prop) {
                       className="text-black"
                       href={`/category/women's clothing`}
                     >
-                      +13 than Women's clothing
+                      {`+13 than Women's clothing`}
                     </Link>
                   </DropdownItem>
                 </DropdownMenu>

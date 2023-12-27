@@ -25,7 +25,7 @@ const SameProducts = async ({ category }: Prop) => {
     <div className="grid grid-cols-3">
       <div className=" flex flex-wrap justify-center">
         {products.map((product: Product) => (
-          <Card className="py-4 w-[150px] m-10">
+          <Card className="py-4 w-[150px] m-10" key={product.id}>
             <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
               <p className="text-tiny uppercase font-bold">{product.title}</p>
               <small className="text-default-500">{product.category}</small>
