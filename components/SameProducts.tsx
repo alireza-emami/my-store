@@ -1,44 +1,31 @@
-// import Detailssss from "@/components/Details";
-import Detailssss from "@/components/Details";
-// import Image from "next/image";
-import Link from "next/link";
+import { Product } from "@/app/page";
 import {
-  Card,
-  CardHeader,
-  CardBody,
-  Image,
-  CardFooter,
   Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Image,
+  Link,
 } from "@nextui-org/react";
 
-export interface Product {
+interface Prop {
   category: string;
-  description: string;
-  id: number;
-  image: string;
-  price: number;
-  rating: {
-    count: number;
-    rate: number;
-  };
-  title: string;
-  item: {
-    name: string;
-    value: string;
-  };
 }
 
-export default async function Home() {
-  const fetchProducts = await fetch("https://fakestoreapi.com/products", {
-    cache: "no-store",
-  });
+const SameProducts = async ({ category }: Prop) => {
+  const fetchProducts = await fetch(
+    `https://fakestoreapi.com/products/category/${category}`,
+    {
+      cache: "no-store",
+    }
+  );
   const products: Product[] = await fetchProducts.json();
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div className="grid grid-cols-3">
       <div className=" flex flex-wrap justify-center">
         {products.map((product: Product) => (
-          <Card className="py-4 w-[300px] m-10" key={product.id}>
+          <Card className="py-4 w-[150px] m-10">
             <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
               <p className="text-tiny uppercase font-bold">{product.title}</p>
               <small className="text-default-500">{product.category}</small>
@@ -46,7 +33,7 @@ export default async function Home() {
             </CardHeader>
             <CardBody className="overflow-visible py-2">
               <Image
-                alt="Card background"
+                alt={product.title}
                 className="object-cover rounded-xl"
                 src={product.image}
                 width={270}
@@ -61,6 +48,8 @@ export default async function Home() {
           </Card>
         ))}
       </div>
-    </main>
+    </div>
   );
-}
+};
+
+export default SameProducts;

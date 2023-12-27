@@ -27,11 +27,11 @@ const CartPage = async () => {
     <>
       <div className="flex flex-col justify-center mb-40">
         {products.map((product) => (
-          <div>
-            <Cart product={product}  />
+          <div key={product.id}>
+            <Cart  product={product}  />
           </div>
         ))}
-        <PayMent products={products}  />
+        <PayMent  products={products}  />
       </div>
     </>
   );

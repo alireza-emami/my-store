@@ -3,13 +3,7 @@ import { Button, Card, CardBody } from "@nextui-org/react";
 import { Product } from "@/app/page";
 
 interface Prop {
-  products: (Product & {
-    item: {
-      name: string;
-      value: string;
-    };
-  })[];
-  quantity: number;
+  products: Product[];
 }
 export default function PayMent({ products }: Prop) {
   let totalPrice = 0;
