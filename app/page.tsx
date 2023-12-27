@@ -1,5 +1,3 @@
-// import Detailssss from "@/components/Details";
-import Detailssss from "@/components/Details";
 // import Image from "next/image";
 import Link from "next/link";
 import {
@@ -22,17 +20,12 @@ export interface Product {
     rate: number;
   };
   title: string;
-  item: {
-    name: string;
-    value: string;
-  };
 }
 
 export default async function Home() {
-  const fetchProducts = await fetch("https://fakestoreapi.com/products", {
+  const products: Product[] = await fetch("https://fakestoreapi.com/products", {
     cache: "no-store",
-  });
-  const products: Product[] = await fetchProducts.json();
+  }).then((res) => res.json());
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

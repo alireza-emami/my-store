@@ -3,9 +3,7 @@ import { cookies } from "next/headers";
 import { Product } from "../page";
 import PayMent from "@/components/PayMent";
 
-interface Prop {
-}
-
+interface Prop {}
 
 const CartPage = async () => {
   const cookieStore = cookies();
@@ -28,11 +26,10 @@ const CartPage = async () => {
       <div className="flex flex-col justify-center mb-40">
         {products.map((product) => (
           <div key={product.id}>
-            <Cart key={product.id}  product={product}  />
+            <Cart   product={product} />
           </div>
         ))}
-        <PayMent key={products.length} 
-         products={products}  />
+        <PayMent products={products} />
       </div>
     </>
   );

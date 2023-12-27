@@ -6,7 +6,12 @@ import { deleteCookie } from "cookies-next";
 import { Relaod } from "@/app/action";
 
 interface Prop {
-  product: Product 
+  product: Product & {
+    item: {
+      name: string;
+      value: string;
+    };
+  };
 }
 export default function Cart({ product }: Prop) {
   return (

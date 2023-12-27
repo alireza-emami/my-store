@@ -6,16 +6,19 @@ import {
   Image,
   CardFooter,
   Button,
-  Link
+  Link,
 } from "@nextui-org/react";
-const CategorysDetails = async ({ params }: { params: { category: string } }) => {
-  const fetchProducts = await fetch(
+const CategorysDetails = async ({
+  params,
+}: {
+  params: { category: string };
+}) => {
+  const products: Product[] = await fetch(
     `https://fakestoreapi.com/products/category/${params.category}`,
     {
       cache: "no-store",
     }
-  );
-  const products: Product[] = await fetchProducts.json();
+  ).then((res) => res.json());
   return (
     <div className=" flex flex-wrap justify-center">
       {products.map((product: Product) => (
@@ -34,7 +37,9 @@ const CategorysDetails = async ({ params }: { params: { category: string } }) =>
           </CardBody>
           <CardFooter>
             <Button className="flex flex-1 " color={"danger"}>
-              <Link className="text-white" href={`/details/${product.id}`}>See more</Link>
+              <Link className="text-white" href={`/details/${product.id}`}>
+                See more
+              </Link>
             </Button>
           </CardFooter>
         </Card>

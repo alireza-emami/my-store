@@ -3,13 +3,12 @@ import Details from "@/components/Details";
 import { cookies } from "next/headers";
 
 async function DetailsPage({ params }: { params: { id: string } }) {
-  const fetchProducts = await fetch(
+  const product: Product = await fetch(
     `https://fakestoreapi.com/products/${params.id}`,
     {
       cache: "no-store",
     }
-  );
-  const product: Product = await fetchProducts.json();
+  ).then((res) => res.json());
   // console.log(product)
 
   const cookieStore = cookies();

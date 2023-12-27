@@ -11,8 +11,6 @@ import {
 import CButton from "./CustomButton";
 import { Product } from "@/app/page";
 import { FC, useState } from "react";
-import SameProducts from "./SameProducts";
-// import SameProducts from "./SameProducts";
 
 interface Prop {
   product: Product;
