@@ -105,8 +105,8 @@ const LoginPage = () => {
           <Input
             type="number"
             placeholder="number"
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
+            value={`${number}`}
+            onChange={(e:any) => setNumber(e.target.value)}
             className="p-2"
           />
           <Input
@@ -125,15 +125,15 @@ const LoginPage = () => {
           <Input
             type="number"
             placeholder="lat"
-            value={lat}
-            onChange={(e) => setLat(e.target.value)}
+            value={`${lat}`}
+            onChange={(e:any) => setLat(e.target.value)}
             className="p-2 "
           />
           <Input
             type="number"
             placeholder="long"
-            value={long}
-            onChange={(e) => setLong(e.target.value)}
+            value={`${long}`}
+            onChange={(e:any) => setLong(e.target.value)}
             className="p-2 "
           />
         </div>
@@ -145,8 +145,8 @@ const LoginPage = () => {
           <Input
             type="number"
             placeholder="phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            value={`${phone}`}
+            onChange={(e:any) => setPhone(e.target.value)}
             className="p-2"
           />
         </div>
