@@ -11,6 +11,9 @@ import {
 import CButton from "./CustomButton";
 import { Product } from "@/app/page";
 import { FC, useState } from "react";
+import { IoMdStar } from "react-icons/io";
+import { AiTwotoneDollarCircle } from "react-icons/ai";
+import { RiAccountCircleFill } from "react-icons/ri";
 
 interface Prop {
   product: Product;
@@ -32,20 +35,41 @@ const Details: FC<Prop> = ({ product, updatedQuantity }) => {
         <CardBody className="flex flex-col-reverse justify-between items-center md:flex-row ">
           <div>
             <p className=" md:w-[550px] p-2">{product.description}</p>
-            <p className="p-2">{product.rating.count}</p>
-            <p className="p-2">{product.rating.rate}</p>
-            <p className="p-2">{product.price}</p>
-            <Input
-              type="number"
-              placeholder="0"
-              className="w-14 "
-              min={"1"}
-              max={"5"}
-              value={quantity.toString()}
-              onChange={(e) => {
-                setQuantity(+e.target.value);
-              }}
-            />
+            <div className="flex items-center">
+              <h3>Count :</h3>
+
+              <p className="p-2">{product.rating.count}</p>
+              <RiAccountCircleFill size={25} />
+            </div>
+
+            <div className="flex items-center">
+              <h3>Rate :</h3>
+              <p className="p-2">{product.rating.rate}</p>
+              <div className="bg-black p-1 rounded-full">
+                <IoMdStar color="yellow" />
+              </div>
+            </div>
+
+            <div className="flex items-center">
+              <h3>Price :</h3>
+              <p className="p-2">{product.price}</p>
+              <AiTwotoneDollarCircle color="green" size={25} />
+            </div>
+
+            <div className="flex items-center">
+              <h3>Quantity :</h3>
+              <Input
+                type="number"
+                placeholder="0"
+                className="w-14 m-1"
+                min={"1"}
+                max={"5"}
+                value={quantity.toString()}
+                onChange={(e) => {
+                  setQuantity(+e.target.value);
+                }}
+              />
+            </div>
           </div>
           <Image
             alt={product.title}
