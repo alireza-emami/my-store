@@ -31,7 +31,7 @@ const CartPage = async () => {
             <Cart key={product.id}  product={product}  />
           </div>
         ))}
-        <PayMent  products={products}  />
+        <PayMent key={products.length}  products={products}  />
       </div>
     </>
   );
